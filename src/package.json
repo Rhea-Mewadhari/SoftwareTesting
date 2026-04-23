@@ -1,8 +1,11 @@
 {
-  "name": "testing",
+  "name": "src",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {},
   "keywords": [],
   "author": "",
