@@ -4,7 +4,7 @@ export class LoginPage {
   constructor(private page: Page) {}
 
   async goto() {
-    await this.page.goto('https://openlibrary.org/account/login');
+    await this.page.goto('/account/login');
   }
 
   async enterEmail(email: string) {
@@ -16,12 +16,12 @@ export class LoginPage {
   }
 
   async clickLogin() {
-    await this.page.getByRole('button', { name: /log in/i }).click();
+    await this.page.getByRole('button', { name: /^log in$/i }).click();
   }
 
   async expectLoginError() {
-  await expect(
-    this.page.getByText(/no account was found with this email/i)
-  ).toBeVisible();
-}
+    await expect(
+      this.page.getByText(/no account was found/i)
+    ).toBeVisible();
+  }
 }

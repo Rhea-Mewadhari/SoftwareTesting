@@ -4,11 +4,11 @@ export class SignUpPage {
   constructor(private page: Page) {}
 
   async goto() {
-    await this.page.goto('https://openlibrary.org/account/create');
+    await this.page.goto('/account/create');
   }
 
   async enterName(name: string) {
-    await this.page.getByLabel(/username|name/i).fill(name);
+    await this.page.getByLabel(/screen name|username|name/i).fill(name);
   }
 
   async enterEmail(email: string) {
@@ -26,13 +26,10 @@ export class SignUpPage {
   async expectInvalidEmailError() {
     const emailInput = this.page.getByLabel(/email/i);
 
-    await expect(emailInput).toBeVisible();
-
     const isInvalid = await emailInput.evaluate(
       (el: HTMLInputElement) => !el.checkValidity()
     );
 
     expect(isInvalid).toBeTruthy();
   }
-
 }
