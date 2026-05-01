@@ -8,9 +8,9 @@ export default defineConfig({
   },
   use: {
     baseURL: 'https://openlibrary.org',
-    trace: 'retain-on-failure',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    screenshot: 'on',
+    video: 'on',
+    trace: 'on',
   },
   projects: [
     {
@@ -25,6 +25,18 @@ export default defineConfig({
         ...devices['iPhone 14'],
       },
     },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    },
+    {
+      name: 'ipad',
+      use: {
+        ...devices['iPad'],
+      },
+    }
   ],
   reporter: [['html']],
 });
